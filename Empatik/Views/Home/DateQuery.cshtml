@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Empatik.Controllers.HomeController.DateModel>
+@{
+    <h1> Günlük Sayfa Görüntülenme Sayıları</h1>
+    <table>
+        <tr>
+            <th> Tarih </th>
+            <th> Ziyaretçi Sayısı </th>
+        </tr>
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Date </td>
+                <td>@x.Count</td>
+
+            </tr>
+        }
+    </table>
+}

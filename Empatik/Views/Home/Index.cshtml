@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Empatik.Controllers.HomeController.PageModel>
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <p>Toplam ziyaretçi sayısı: @ViewBag.TotalViewers</p>
+    <p>En çok ziyaretçinin geldiği ülke: @ViewBag.CountryWithMostViews</p>
+</div>
+
+<h1> Sayfa Görüntülenme Sayıları</h1>
+<table>
+    <tr>
+        <th> Sayfa </th>
+        <th> Görüntülenme Sayısı </th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.Page </td>
+            <td>@x.Count</td>
+
+        </tr>
+    }
+</table>
+<h1> Günlük Sayfa Görüntülenme Sayıları</h1>
+<div>
+    @using (Html.BeginForm("DateQuery", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            Başlangıç <input type="date" name="date1" />
+            Bitiş <input type="date" name="date2" />
+            <input type="submit" value="Filtrele" />
+        </fieldset>
+    }
+</div>
+
